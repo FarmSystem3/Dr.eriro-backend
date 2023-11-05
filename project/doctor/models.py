@@ -16,7 +16,7 @@ class Doctor(models.Model):
     gender = models.CharField(max_length=1, choices=[('M', '남성'), ('F', '여성')])
     location = models.CharField(max_length=100)  
     number = models.CharField(max_length=20)  
-    photo = models.ImageField(upload_to='doctors/') 
+    photo = models.ImageField(upload_to='doctors/', default='project/image/DefaultDoctor.png') 
     hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE) 
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE) 
 
@@ -28,7 +28,7 @@ class Patient(models.Model):
     number = models.CharField(max_length=20)  
     height = models.IntegerField()
     weight = models.IntegerField()
-    underlying_disease = models.CharField(max_length=100)  
+    underlying_disease = models.CharField(max_length=100,null=True)  
     location = models.CharField(max_length=100)  
 
 class Reservation(models.Model):
